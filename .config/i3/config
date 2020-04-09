@@ -51,8 +51,8 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Keyboard brightness controls
-bindsym XF86KbdBrightnessDown exec sudo -u marcos bash /opt/tweaks/kbd_backlight_adjust -dec
-bindsym XF86KbdBrightnessUp exec sudo -u marcos bash /opt/tweaks/kbd_backlight_adjust -inc
+bindsym XF86KbdBrightnessDown exec sudo -u $USER bash /opt/tweaks/kbd_backlight_adjust -dec
+bindsym XF86KbdBrightnessUp exec sudo -u $USER bash /opt/tweaks/kbd_backlight_adjust -inc
 
 
 # launch Firefox from ASUS key
@@ -234,14 +234,14 @@ bindsym $mod+shift+x exec bash ~/.config/i3/lock.sh ~/.config/i3/lock.png
 
 # Different screen prints
 
-bindsym shift+Print exec "/home/marcos/.config/i3/Scripts/print_screen.sh screen_file" 
-bindsym shift+Mod1+Sys_Req exec "/home/marcos/.config/i3/Scripts/print_screen.sh window_file" 
-bindsym shift+Ctrl+Print exec "/home/marcos/.config/i3/Scripts/print_screen.sh section_file" 
+bindsym shift+Print exec "/home/$USER/.config/i3/Scripts/print_screen.sh screen_file" 
+bindsym shift+Mod1+Sys_Req exec "/home/$USER/.config/i3/Scripts/print_screen.sh window_file" 
+bindsym shift+Ctrl+Print exec "/home/$USER/.config/i3/Scripts/print_screen.sh section_file" 
 
 
-bindsym Print exec "/home/marcos/.config/i3/Scripts/print_screen.sh screen_clipboard" 
-bindsym Mod1+Sys_Req exec "/home/marcos/.config/i3/Scripts/print_screen.sh window_clipboard" 
-bindsym Ctrl+Print exec "/home/marcos/.config/i3/Scripts/print_screen.sh section_clipboard" 
+bindsym Print exec "/home/$USER/.config/i3/Scripts/print_screen.sh screen_clipboard" 
+bindsym Mod1+Sys_Req exec "/home/$USER/.config/i3/Scripts/print_screen.sh window_clipboard" 
+bindsym Ctrl+Print exec "/home/$USER/.config/i3/Scripts/print_screen.sh section_clipboard" 
 
 # start composer
 exec compton
@@ -254,4 +254,4 @@ exec spotify
 exec rambox
 
 # Autolock
-exec xautolock -locker "/home/marcos/.config/i3/Scripts/lock.sh /home/marcos/.config/i3/Scripts/lock.png"
+exec xautolock -locker "/home/$USER/.config/i3/Scripts/lock.sh /home/$USER/.config/i3/Scripts/lock.png"
