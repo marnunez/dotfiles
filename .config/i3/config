@@ -131,10 +131,13 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8: Tesis"
 set $ws9 "9: Social"
 set $ws10 "10: Música"
 
+exec --no-startup-id i3-msg 'workspace 8: Tesis; exec code-insiders ~/Documentos/Tesis'
+
+bindsym $mod+Tab workspace back_and_forth
 # applications that belong to certain workspaces
 
 for_window [class="Spotify"] move to workspace $ws10
@@ -250,8 +253,9 @@ exec compton
 bindsym $mod+Shift+colon exec rofi -show run -fullscreen 
 
 # Run this programs on every login
-exec spotify
-exec rambox
+exec --no-startup-id spotify
+exec --no-startup-id rambox
+exec --no-startup-id qbittorrent
 
 # Autolock
 exec xautolock -locker "/home/$USER/.config/i3/Scripts/lock.sh /home/$USER/.config/i3/Scripts/lock.png"
