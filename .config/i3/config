@@ -38,11 +38,12 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
+bindsym $mod+Mod1+k exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
+bindsym $mod+Mod1+j exec playerctl previous
 # Map ASUS ROG key to play-pause
 bindsym XF86Launch1 exec playerctl play-pause
 
@@ -124,24 +125,21 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Terms"
-set $ws2 "2: Firefox "
+set $ws1 "1"
+set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8: Tesis"
-set $ws9 "9: Social"
-set $ws10 "10: Música"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
-exec --no-startup-id i3-msg 'workspace 8: Tesis; exec code-insiders ~/Documentos/Tesis'
 
 bindsym $mod+Tab workspace back_and_forth
 # applications that belong to certain workspaces
 
-for_window [class="Spotify"] move to workspace $ws10
-assign [class="Rambox"] $ws9
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -253,12 +251,17 @@ exec compton
 bindsym $mod+Shift+colon exec rofi -show run -fullscreen 
 
 # Run this programs on every login
+exec --no-startup-id i3-msg 'workspace 8; exec code-insiders ~/Documentos/Tesis'
+assign [class="Code - Insiders"] $ws8
+exec --no-startup-id i3-msg 'workspace 2; exec firefox'
+assign [class="Firefox"] $ws2
+for_window [class="Spotify"] move to workspace $ws10
+assign [class="Rambox"] $ws9
 exec --no-startup-id spotify
 exec --no-startup-id rambox
 exec --no-startup-id qbittorrent
 exec --no-startup-id /home/marcos/.config/polybar/launch.sh
-exec --no-startup-id feh --randomize --bg-fill /home/marcos/Imágenes/Campo/HD/*
-
-
+exec --no-startup-id feh --auto-rotate --randomize --bg-fill /home/marcos/Imágenes/Campo/HD/*
+exec_always ~/.config/i3/Scripts/autoname_workspaces.py --norenumber_workspaces --icon_list_format='chemist' &
 # Autolock
 exec xautolock -locker "/home/$USER/.config/i3/Scripts/lock.sh /home/$USER/.config/i3/Scripts/lock.png"
