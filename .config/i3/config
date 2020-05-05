@@ -260,8 +260,8 @@ assign [class="Rambox"] $ws9
 exec --no-startup-id spotify
 exec --no-startup-id rambox
 exec --no-startup-id qbittorrent
-exec --no-startup-id /home/marcos/.config/polybar/launch.sh
-exec --no-startup-id feh --auto-rotate --randomize --bg-fill /home/marcos/Imágenes/Campo/HD/*
+exec --no-startup-id /home/$USER/.config/polybar/launch.sh
+exec --no-startup-id feh --auto-rotate --randomize --bg-fill /home/$USER/Imágenes/Campo/HD/*
 exec_always ~/.config/i3/Scripts/autoname_workspaces.py --norenumber_workspaces --icon_list_format='chemist' &
 # Autolock
 exec xautolock -locker "/home/$USER/.config/i3/Scripts/lock.sh /home/$USER/.config/i3/Scripts/lock.png"
