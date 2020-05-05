@@ -118,7 +118,7 @@ bar-empty-foreground = #44
 ;[module/consumation]
 ;type = custom/script
 
-;exec = /home/marcos/.config/polybar/power.sh
+;exec = /home/$USER/.config/polybar/power.sh
 ;interval = 2
 
 [module/battery]
@@ -439,22 +439,22 @@ type = custom/script
 interval = 1
 format-prefix = "  "  
 format = <label>
-exec = python3   /home/marcos/.config/polybar/spotify.py  -f '{play_pause} {song} - {artist} - {album}'
+exec = python3   /home/$USER/.config/polybar/spotify.py  -f '{play_pause} {song} - {artist} - {album}'
 
 format-underline = #1db954
 
 [module/player-mpris-tail]
 type = custom/script
-exec = /home/marcos/.config/polybar/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:/home/marcos/.config/polybar/player-mpris-tail.py previous:} ⏮ %{A} %{A1:/home/marcos/.config/polybar/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:/home/marcos/.config/polybar/player-mpris-tail.py next:} ⏭ %{A}'
+exec = /home/$USER/.config/polybar/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:/home/$USER/.config/polybar/player-mpris-tail.py previous:} ⏮ %{A} %{A1:/home/$USER/.config/polybar/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:/home/$USER/.config/polybar/player-mpris-tail.py next:} ⏭ %{A}'
 tail = true
 ; vim:ft=dosini
 ;
 [module/headphone-reconnect]
 type=custom/script
-exec = "/home/marcos/.config/polybar/reconnect_headphones.py -i '04:52:C7:79:69:3A'"
+exec = "/home/$USER/.config/polybar/reconnect_headphones.py -i '04:52:C7:79:69:3A'"
 tail = true
 interval = 5
 label = %output%
-click-left = "/home/marcos/.config/polybar/reconnect_headphones.py -t '04:52:C7:79:69:3A'" 
-double-click-left = "/home/marcos/.config/polybar/reconnect_headphones.py -r '04:52:C7:79:69:3A'" 
+click-left = "/home/$USER/.config/polybar/reconnect_headphones.py -t '04:52:C7:79:69:3A'" 
+double-click-left = "/home/$USER/.config/polybar/reconnect_headphones.py -r '04:52:C7:79:69:3A'" 
 
