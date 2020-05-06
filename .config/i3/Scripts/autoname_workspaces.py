@@ -102,6 +102,7 @@ WINDOW_ICONS = {
     "subl": fa.icons["file-alt"],
     "subl3": fa.icons["file-alt"],
     "sublime_text": fa.icons["file-alt"],
+    "teamviewer": fa.icons["desktop"],
     "thunar": fa.icons["copy"],
     "thunderbird": fa.icons["envelope"],
     "totem": fa.icons["play"],
@@ -111,6 +112,7 @@ WINDOW_ICONS = {
     "xfce4-terminal": fa.icons["terminal"],
     "xournal": fa.icons["file-alt"],
     "yelp": fa.icons["code"],
+    "zathura": fa.icons["file-pdf"],
     "zenity": fa.icons["window-maximize"],
     "zoom": fa.icons["comment"],
 }
