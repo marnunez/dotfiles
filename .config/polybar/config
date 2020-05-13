@@ -31,7 +31,7 @@ font-6 = "Unifont:size=11;0"
 
 
 modules-left = mpd 
-modules-right = headphone-reconnect xkeyboard backlight pulseaudio wireless-network battery date powermenu 
+modules-right = xkeyboard wireless-network backlight battery pulseaudio headphone-reconnect date powermenu 
 
 ;wm-restack = i3
 

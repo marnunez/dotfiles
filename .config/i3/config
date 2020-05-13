@@ -137,8 +137,8 @@ bindsym $mod+a focus parent
 
 
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Mod1+L workspace next
-bindsym $mod+Mod1+H workspace prev
+bindsym $mod+Ctrl+L workspace next
+bindsym $mod+Ctrl+H workspace prev
 # applications that belong to certain workspaces
 
 
@@ -200,9 +200,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
 # gaps
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 1
 
 gaps inner 5
 
@@ -214,7 +213,7 @@ set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.focused          $inactive-bg-color $inactive-bg-color $text-color          #00ff00
 client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
