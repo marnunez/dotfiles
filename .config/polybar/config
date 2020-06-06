@@ -78,7 +78,7 @@ module-margin-left = 0
 module-margin-right = 6
 
 modules-left = i3 player-mpris-tail  
-modules-right = cpu memory temperature filesystem date 
+modules-right = cpu memory temperature filesystem  
 
 tray-position = right 
 tray-scale = 1.0

@@ -47,6 +47,8 @@ bindsym $mod+Ctrl+j exec playerctl previous
 # Map ASUS ROG key to play-pause
 bindsym XF86Launch1 exec playerctl play-pause
 
+bindsym XF86Switch_VT_8 exec arandr
+
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
@@ -67,6 +69,8 @@ bindsym $mod+Return exec kitty
 # kill focused window (vim delete, follows vimperator settings more than vim)
 bindsym $mod+d kill
 
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -111,10 +115,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+Space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+Space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -205,7 +209,15 @@ for_window [class=".*"] border pixel 1
 
 gaps inner 5
 
-set $bg-color 	         #2f343f
+#Smart gaps (gaps used if only more than one container on the workspace)
+#smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+
+set $bg-color 	         #00ff00
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
@@ -213,7 +225,7 @@ set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $inactive-bg-color $inactive-bg-color $text-color          #00ff00
+client.focused          $bg-color             $bg-color  $text-color          #00ff00
 client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
@@ -257,6 +269,11 @@ exec_always --no-startup-id feh --randomize --bg-fill --auto-rotate /home/marcos
 # replace dmenu with rofi
 bindsym $mod+Shift+colon exec rofi -show run  
 
+# lastpass
+
+bindsym --release $mod+comma exec "/home/$USER/.config/i3/Scripts/i3-lastpass"
+bindsym --release $mod+period exec --no-startup-id "xdotool type --delay 0 --clearmodifiers $(xsel --secondary -o -c)"
+
 # Run this programs on every login
 exec --no-startup-id /home/marcos/.config/polybar/launch.sh
 exec_always ~/.config/i3/Scripts/autoname_workspaces.py --norenumber_workspaces --icon_list_format='chemist' &
@@ -271,6 +288,9 @@ exec --no-startup-id spotify
 exec --no-startup-id rambox
 exec --no-startup-id qbittorrent
 exec --no-startup-id feh --auto-rotate --randomize --bg-fill /home/$USER/Imágenes/Campo/HD/*
+exec xscreensaver &
 exec_always ~/.config/i3/Scripts/autoname_workspaces.py --norenumber_workspaces --icon_list_format='chemist' &
 # Autolock
-exec xautolock -locker "/home/$USER/.config/i3/Scripts/lock.sh /home/$USER/.config/i3/Scripts/lock.png"
+#exec xautolock -locker "/home/$USER/.config/i3/Scripts/lock.sh /home/$USER/.config/i3/Scripts/lock.png"
+for_window [instance="__scratchpad"] move scratchpad 
+exec --no-startup-id kitty --name __scratchpad

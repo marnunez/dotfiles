@@ -10,6 +10,8 @@
 
 " Use space as leader
 let mapleader = " "
+let maplocalleader = " "
+
 imap jj <Esc>
 let fancy_symbols_enabled = 0
 
@@ -80,6 +82,7 @@ Plug 'vim-scripts/IndexedSearch'
 " A couple of nice colorschemes
 " Plug 'fisadev/fisa-vim-colorscheme'
 Plug 'patstockwell/vim-monokai-tasty'
+Plug 'morhetz/gruvbox'
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -97,6 +100,7 @@ if using_neovim && vim_plug_just_installed
 else
     Plug 'Shougo/deoplete.nvim'
 endif
+"Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 " Python autocompletion
@@ -156,6 +160,13 @@ endif
 " and g:hound_port, pointing to your hound instance
 " Plug 'mattn/webapi-vim'
 " Plug 'jfo/hound.vim'
+"
+" Vim-man: navigate man pages
+
+Plug 'vim-utils/vim-man'
+
+" Undo tree
+Plug 'mbbill/undotree'
 
 " Use black formatting
 Plug 'psf/black'
@@ -220,7 +231,7 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-
+set smartindent
 " show line numbers
 set nu
 
@@ -232,17 +243,19 @@ if has('gui_running') || using_neovim || (&term =~? 'mlterm\|xterm\|xterm-256\|s
     if !has('gui_running')
         let &t_Co = 256
     endif
-    colorscheme vim-monokai-tasty
+    "colorscheme vim-monokai-tasty
+    colorscheme gruvbox
 else
     colorscheme delek
 endif
+set background=dark
 
 " needed so deoplete can auto select the first suggestion
 set completeopt+=noinsert
 " comment this line to enable autocompletion preview window
 " (displays documentation related to the selected completion option)
 " disabled by default because preview makes the window flicker
-set completeopt-=preview
+"set completeopt-=preview
 
 " autocompletion of files and commands behaves like shell
 " (complete only the common part, list the options that match)
@@ -254,9 +267,10 @@ ca w!! w !sudo tee "%"
 " tab navigation mappings
 map tt :tabnew 
 map <M-Right> :tabn<CR>
-imap <M-Right> <ESC>:tabn<CR>
-map <M-Left> :tabp<CR>
-imap <M-Left> <ESC>:tabp<CR>
+map <M-l> :tabn<CR>
+imap <M-l> <ESC>:tabn<CR>
+map <M-h> :tabp<CR>
+imap <M-h> <ESC>:tabp<CR>
 
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
@@ -332,6 +346,7 @@ function! NERDTreeRefresh()
 endfunction
 
 autocmd BufEnter * call NERDTreeRefresh()
+
 " This is new style
 call deoplete#custom#var('omni', 'input_patterns', {
       \ 'tex': g:vimtex#re#deoplete
@@ -387,6 +402,8 @@ let g:deoplete#enable_ignore_case = 1
 call deoplete#custom#option('smart_case', v:true)
 let g:context_filetype#same_filetypes = {}
 let g:context_filetype#same_filetypes._ = '_'
+"call deoppet#initialize()
+"call deoppet#custom#option('snippets_dirs', \ globpath(&runtimepath, 'neosnippets', 1, 1))
 
 " Jedi-vim ------------------------------
 
@@ -403,13 +420,14 @@ let g:jedi#goto_assignments_command = ',a'
 " Go to definition in new tab
 nmap ,D :tab split<CR>:call jedi#goto()<CR>
 
-
+" Vimtex config
 let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
 let g:vimtex_fold_manual=1
 let g:vimtex_latexmk_continuous = 1
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_method = 'zathura'
+
 " Ack.vim ------------------------------
 
 " mappings
